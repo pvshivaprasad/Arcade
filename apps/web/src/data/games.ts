@@ -9,7 +9,7 @@ export const games: Game[] = [
     category: "Classic",
     difficulty: "Easy",
     players: "1 Player",
-    status: "coming-soon",
+    status: "available",
     accent: "lime",
     symbol: "〰",
     featured: true,
