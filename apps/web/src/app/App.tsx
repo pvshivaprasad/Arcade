@@ -4,6 +4,7 @@ import Logo from "../components/Logo";
 import HomePage from "../pages/HomePage";
 import ExplorePage from "../pages/ExplorePage";
 import type { Game } from "../types/game";
+import SnakeGame from "../games/snake/SnakeGame";
 
 type Page = "home" | "explore";
 
@@ -11,13 +12,15 @@ export default function App() {
   const [page, setPage] = useState<Page>("home");
   const [mobileMenu, setMobileMenu] = useState(false);
   const [notice, setNotice] = useState("");
+  const [activeGame, setActiveGame] = useState<string | null>(null);
 
   function playGame(game: Game) {
-    if (game.status === "available") {
-      setNotice(`${game.title} is ready for integration. The shared game launcher is Phase 2.`);
-    } else {
-      setNotice(`${game.title} is on the roadmap. Stay tuned!`);
+    if (game.id === "snake") {
+      setNotice("");
+      setActiveGame("snake");
+      return;
     }
+    setNotice(`${game.title} is still in development. Snake is the first playable game!`);
   }
 
   function navigate(next: Page) {
@@ -44,6 +47,8 @@ export default function App() {
           </div>
         </div>
       </header>
+
+      {activeGame === "snake" && <SnakeGame onClose={() => setActiveGame(null)} />}
 
       <main className="main-content">
         {notice && <div className="notice" role="status"><span>{notice}</span><button aria-label="Dismiss" onClick={() => setNotice("")}><X size={15} /></button></div>}
