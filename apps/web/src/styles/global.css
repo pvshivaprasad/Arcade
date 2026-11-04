@@ -369,3 +369,30 @@ button, input { font-family: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .game-preview-backdrop, .game-preview { animation: none; }
 }
+
+/* ARCADE Game Pack 01 runtime */
+.arcade-game-overlay { position:fixed; inset:0; z-index:70; display:grid; place-items:center; padding:20px; background:#080c15e8; backdrop-filter:blur(12px); }
+.arcade-game-panel { position:relative; width:min(100%,760px); max-height:95vh; overflow:auto; padding:24px; border:1px solid #ffffff1c; border-radius:20px; background:#171f2e; box-shadow:0 30px 100px #000a; }
+.arcade-game-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.arcade-game-header h2 { margin:3px 0 0; font:700 30px 'Outfit',sans-serif; }
+.arcade-game-header h2 i { color:var(--gold); font-style:normal; }
+.arcade-game-score { display:flex; gap:25px; padding:12px 0; margin-bottom:12px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); color:#9ba8bb; font-size:11px; letter-spacing:1px; }
+.arcade-game-score b { color:var(--gold); margin-left:5px; font-size:16px; }
+.arcade-live { margin-left:auto; color:#9bd6b3; }
+.arcade-canvas { display:block; width:100%; max-height:55vh; aspect-ratio:640/420; object-fit:contain; border:1px solid #ffffff16; border-radius:12px; background:#111a28; }
+.arcade-game-help { padding:12px 0; color:#9ba8bb; font-size:11px; text-align:center; }
+.arcade-game-footer { display:flex; justify-content:space-between; align-items:center; gap:12px; color:#8996aa; font-size:10px; }
+.arcade-game-footer div { display:flex; gap:8px; }
+.arcade-game-footer button { width:36px; height:36px; display:grid; place-items:center; color:var(--gold); border:1px solid var(--line); border-radius:9px; background:#ffffff08; }
+.arcade-game-curtain { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:min(85%,360px); padding:26px; text-align:center; border:1px solid #ffffff20; border-radius:16px; background:#101522ed; box-shadow:0 20px 60px #0009; }
+.arcade-game-curtain h3 { margin:5px 0; font:700 24px 'Outfit',sans-serif; }
+.arcade-game-curtain p { color:var(--muted); font-size:12px; margin:0 0 18px; }
+.curtain-star { color:var(--gold); font-size:27px; }
+.arcade-game-curtain .button { display:inline-flex; align-items:center; gap:9px; }
+.memory-board,.merge-board { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; width:min(100%,460px); margin:18px auto; padding:14px; border-radius:14px; background:#101522; }
+.memory-card { aspect-ratio:1; border:1px solid #ffffff20; border-radius:11px; color:#f5d58a; background:linear-gradient(145deg,#29364a,#1b2637); font:700 clamp(20px,5vw,36px) 'Outfit',sans-serif; transition:transform .18s,background .18s; }
+.memory-card.revealed { color:#19202b; background:#f5d58a; transform:rotateY(8deg); }
+.memory-card.matched { color:#173329; background:#9bd6b3; }
+.merge-tile { display:grid; place-items:center; aspect-ratio:1; border-radius:10px; background:#293448; color:#f5f2e9; font:700 clamp(18px,4vw,30px) 'Outfit',sans-serif; }
+.merge-tile.tile-2 { background:#e8dfca; color:#3a352c; }.merge-tile.tile-4 { background:#e6cda0; color:#3a352c; }.merge-tile.tile-8 { background:#e8a66e; }.merge-tile.tile-16 { background:#dc805e; }.merge-tile.tile-32 { background:#cb665d; }.merge-tile.tile-64 { background:#b94b58; }.merge-tile.tile-128,.merge-tile.tile-256,.merge-tile.tile-512,.merge-tile.tile-1024,.merge-tile.tile-2048 { background:#d8b65f; color:#29251c; }
+@media(max-width:560px){.arcade-game-panel{padding:16px}.arcade-game-header h2{font-size:25px}.arcade-game-score{gap:13px;font-size:9px}.arcade-game-footer{font-size:9px}.memory-board,.merge-board{gap:6px;padding:8px}.arcade-game-curtain{padding:18px}}
