@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Gamepad2, Menu, Search, UserRound, X } from "lucide-react";
+import { Menu, Search, UserRound, X } from "lucide-react";
 import Logo from "../components/Logo";
 import HomePage from "../pages/HomePage";
 import ExplorePage from "../pages/ExplorePage";
 import type { Game } from "../types/game";
 import SnakeGame from "../games/snake/SnakeGame";
+import GamePreview from "../components/GamePreview";
 
 type Page = "home" | "explore";
 
@@ -12,15 +13,18 @@ export default function App() {
   const [page, setPage] = useState<Page>("home");
   const [mobileMenu, setMobileMenu] = useState(false);
   const [notice, setNotice] = useState("");
+  const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [activeGame, setActiveGame] = useState<string | null>(null);
 
-  function playGame(game: Game) {
-    if (game.id === "snake") {
-      setNotice("");
-      setActiveGame("snake");
-      return;
-    }
-    setNotice(`${game.title} is still in development. Snake is the first playable game!`);
+  function openPreview(game: Game) {
+    setNotice("");
+    setSelectedGame(game);
+  }
+
+  function launchGame(game: Game) {
+    if (game.id !== "snake") return;
+    setSelectedGame(null);
+    setActiveGame("snake");
   }
 
   function navigate(next: Page) {
@@ -48,16 +52,17 @@ export default function App() {
         </div>
       </header>
 
+      {selectedGame && <GamePreview game={selectedGame} onClose={() => setSelectedGame(null)} onPlay={launchGame} />}
       {activeGame === "snake" && <SnakeGame onClose={() => setActiveGame(null)} />}
 
       <main className="main-content">
         {notice && <div className="notice" role="status"><span>{notice}</span><button aria-label="Dismiss" onClick={() => setNotice("")}><X size={15} /></button></div>}
-        {page === "home" ? <HomePage onExplore={() => navigate("explore")} onPlay={playGame} /> : <ExplorePage onPlay={playGame} />}
+        {page === "home" ? <HomePage onExplore={() => navigate("explore")} onPlay={openPreview} /> : <ExplorePage onPlay={openPreview} />}
       </main>
 
       <footer className="footer">
         <div className="footer-top"><Logo /><span>Every game. One destination.</span><div className="footer-links"><button onClick={() => navigate("home")}>Home</button><button onClick={() => navigate("explore")}>Games</button><button onClick={() => setNotice("Contact information will be added before launch.")}>Contact</button></div></div>
-        <div className="footer-bottom"><span>© 2026 ARCADE. Built for play.</span><span>MADE FOR YOUR FIVE-MINUTE BREAKS <Gamepad2 size={13} /></span></div>
+        <div className="footer-bottom"><span>© 2026 ARCADE. Built for play.</span><span>MADE FOR YOUR FIVE-MINUTE BREAKS <span aria-hidden="true">✦</span></span></div>
       </footer>
     </div>
   );
