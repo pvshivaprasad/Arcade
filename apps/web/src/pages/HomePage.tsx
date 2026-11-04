@@ -10,7 +10,7 @@ interface Props {
 
 export default function HomePage({ onExplore, onPlay }: Props) {
   const featured = games.filter((game) => game.featured);
-  const popular = games.slice(0, 4);
+  const popular = games.filter((game) => !game.featured).slice(0, 4);
 
   return (
     <>
