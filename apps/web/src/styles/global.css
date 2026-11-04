@@ -317,3 +317,55 @@ button, input { font-family: inherit; }
   .game-art { min-height: 135px; }
   .art-index { font-size: 7px; }
 }
+
+
+/* Game preview and launch panel */
+.game-preview-backdrop {
+  position: fixed; inset: 0; z-index: 60; display: grid; place-items: center;
+  padding: 24px; background: #080c15c9; backdrop-filter: blur(12px);
+  animation: preview-fade .18s ease-out;
+}
+.game-preview {
+  position: relative; width: min(100%, 590px); overflow: hidden;
+  background: #171f2e; border: 1px solid #ffffff1b; border-radius: 20px;
+  box-shadow: 0 28px 100px #0009; animation: preview-rise .24s ease-out;
+}
+.preview-close {
+  position: absolute; z-index: 4; top: 15px; right: 15px; width: 38px; height: 38px;
+  display: grid; place-items: center; color: #f4f2ec; background: #101522b8;
+  border: 1px solid #ffffff25; border-radius: 11px;
+}
+.preview-art { height: 205px; display: grid; place-items: center; }
+.preview-art .art-symbol { font-size: 92px; }
+.preview-art .art-index { font-size: 9px; }
+.preview-content { padding: 27px 30px 30px; }
+.preview-content h2 { margin: 7px 0 3px; font: 700 38px 'Outfit', sans-serif; letter-spacing: -1px; }
+.preview-content h2 span { color: var(--gold); }
+.preview-description { margin: 0; color: var(--muted); font-size: 14px; }
+.preview-facts { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 24px 0; padding: 17px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.preview-facts > div { display: flex; align-items: center; gap: 9px; color: var(--gold); min-width: 0; }
+.preview-facts small, .preview-facts strong { display: block; }
+.preview-facts small { color: #8290a5; font-size: 9px; letter-spacing: 1px; font-weight: 800; }
+.preview-facts strong { color: var(--text); font-size: 11px; margin-top: 3px; }
+.preview-status-dot { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: #d5a35f; box-shadow: 0 0 10px #d5a35f66; }
+.preview-status-dot.is-ready { background: #79c9a1; box-shadow: 0 0 10px #79c9a166; }
+.preview-how { padding: 15px 17px; border-radius: 12px; background: #ffffff06; }
+.preview-how strong { color: var(--gold); font-size: 9px; letter-spacing: 1.2px; }
+.preview-how p { margin: 7px 0 0; color: #aab4c4; font-size: 12px; line-height: 1.7; }
+.preview-actions { display: flex; align-items: center; gap: 18px; margin-top: 22px; }
+.preview-actions .button:disabled { cursor: not-allowed; color: #d0c3a3; background: #5a503b; box-shadow: none; opacity: .85; }
+.preview-back { color: #aab4c4; background: none; border: 0; font-size: 12px; font-weight: 700; }
+@keyframes preview-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes preview-rise { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 560px) {
+  .game-preview-backdrop { padding: 12px; align-items: center; }
+  .preview-art { height: 165px; }
+  .preview-content { padding: 22px 19px 23px; }
+  .preview-content h2 { font-size: 32px; }
+  .preview-facts { gap: 7px; }
+  .preview-facts > div { gap: 6px; }
+  .preview-facts strong { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-preview-backdrop, .game-preview { animation: none; }
+}
