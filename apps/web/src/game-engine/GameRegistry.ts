@@ -1,8 +1,10 @@
+import type { ComponentType } from "react";
+
 export interface GameModule {
   id: string;
   title: string;
   description: string;
-  component: () => Promise<{ default: React.ComponentType<{ onClose: () => void }> }>;
+  component: () => Promise<{ default: ComponentType<{ onClose: () => void }> }>;
 }
 
 export const gameRegistry: Record<string, GameModule> = {
