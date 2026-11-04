@@ -27,7 +27,6 @@ export default function SnakeGame({ onClose }: { onClose: () => void }) {
   const [status, setStatus] = useState<Status>("ready");
   const [score, setScore] = useState(0);
   const [best, setBest] = useState(() => Number(localStorage.getItem("arcade-snake-best") ?? 0));
-  const [touchDirection, setTouchDirection] = useState<Direction | null>(null);
 
   const changeDirection = useCallback((next: Direction) => {
     setDirection((current) => next === opposite[current] ? current : next);
