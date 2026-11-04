@@ -13,7 +13,7 @@ const LEVELS=[
 ];
 function makeBoard(){const b=Array(16).fill(0);for(let n=0;n<2;n++){const e=b.map((v,i)=>v===0?i:-1).filter(i=>i>=0);b[e[Math.floor(Math.random()*e.length)]]=Math.random()<.9?2:4;}return b;}
 function makeCards(){return Array.from({length:16},(_,i)=>Math.floor(i/2)+1).sort(()=>Math.random()-.5);}
-function freshState():any{return {frame:0,paddle:W/2,paddle2:H/2,ball:{x:W/2,y:H/2,vx:3.4,vy:2.8},bricks:Array.from({length:40},(_,i)=>({x:35+(i%10)*58,y:55+Math.floor(i/10)*27,alive:true})),objects:[],player:{x:W/2,y:H-55},lane:1,cooldown:0,lives:3,level:0,worldX:50,vy:0,onGround:false,collected:[],invulnerable:0,ended:false};}
+function freshState():any{return {frame:0,paddle:W/2,paddle2:H/2,ball:{x:W/2,y:H/2,vx:3.4,vy:2.8},bricks:Array.from({length:40},(_,i)=>({x:35+(i%10)*58,y:55+Math.floor(i/10)*27,alive:true})),objects:[],player:{x:50,y:365},lane:1,cooldown:0,lives:3,level:0,worldX:0,vy:0,onGround:false,collected:[],invulnerable:0,ended:false};}
 export default function ArcadeGame({gameId,onClose}:Props){
  const canvasRef=useRef<HTMLCanvasElement>(null), stateRef=useRef<any>(freshState()), keys=useRef<Record<string,boolean>>({}), scoreRef=useRef(0), timerRef=useRef<number|undefined>(undefined);
  const [status,setStatus]=useState<Status>("ready"),[score,setScore]=useState(0),[best,setBest]=useState(()=>Number(localStorage.getItem(`arcade-${gameId}-best`)||0));
