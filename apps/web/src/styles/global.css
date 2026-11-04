@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #f4f2ec;
   background: #101522;
   font-synthesis: none;
@@ -23,7 +23,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--gold); outl
 .app-shell { min-height: 100vh; overflow: hidden; background: radial-gradient(ellipse at 78% 4%, rgba(87,78,112,.15), transparent 34%), var(--bg); }
 .topbar { height: 76px; border-bottom: 1px solid var(--line); background: rgba(16,21,34,.88); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px); }
 .topbar-inner { max-width: 1180px; height: 100%; margin: auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
-.logo-lockup { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font: 700 20px 'Space Grotesk', sans-serif; letter-spacing: 1.8px; }
+.logo-lockup { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font: 700 20px 'Outfit', sans-serif; letter-spacing: 1.8px; }
 .logo-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px 10px 10px 3px; color: #171b24; background: var(--gold); font-size: 18px; letter-spacing: 0; }
 .logo-period, h2 span, .explore-title-row h1 span { color: var(--gold); }
 .main-nav { display: flex; align-items: center; gap: 32px; height: 100%; }
@@ -173,4 +173,55 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--gold); outl
   .footer-bottom { align-items: flex-start; flex-direction: column; }
   .explore-title-row h1 { font-size: 37px; }
   .explore-title-row p { max-width: 240px; line-height: 1.5; }
+}
+
+
+/* ARCADE typography and readability refresh */
+:root { font-size: 16px; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; line-height: 1.6; }
+button, input { font-family: inherit; }
+.logo-lockup { font-family: 'Outfit', sans-serif; font-size: 22px; letter-spacing: 1.5px; }
+.main-nav button, .profile-button { font-size: 14px; }
+.hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(54px, 6.4vw, 82px); line-height: 1.02; letter-spacing: -2.8px; }
+.hero-copy > p { font-size: 16px; line-height: 1.85; }
+.eyebrow { font-size: 11px; letter-spacing: 1.6px; }
+.button { font-size: 14px; padding: 14px 19px; }
+.hero-note { font-size: 13px; }
+.hero-center strong { font-family: 'Outfit', sans-serif; }
+.quick-stats strong { font-size: 21px; }
+.quick-stats small { font-size: 12px; }
+.section-heading h2 { font-family: 'Outfit', sans-serif; font-size: 31px; letter-spacing: -.8px; }
+.text-button { font-size: 13px; }
+.game-art { height: 165px; }
+.art-symbol { font-family: 'Outfit', sans-serif; font-size: 70px; }
+.art-category { font-size: 11px; }
+.coming-tag { font-size: 10px; }
+.game-info { padding: 17px; }
+.game-title-row h3 { font-family: 'Outfit', sans-serif; font-size: 19px; letter-spacing: -.25px; }
+.game-title-row p { font-size: 13px; line-height: 1.65; }
+.game-meta { font-size: 11px; }
+.footer-top > span { font-size: 13px; }
+.footer-links button { font-size: 12px; }
+.footer-bottom { font-size: 11px; }
+.explore-title-row h1 { font-family: 'Outfit', sans-serif; font-size: 54px; letter-spacing: -1.8px; }
+.explore-title-row p { font-size: 15px; }
+.catalog-count, .results-line { font-size: 11px; }
+.search-box { height: 50px; }
+.search-box input { font-size: 14px; }
+.filter-label { font-size: 11px; }
+.category-tabs button { font-size: 12px; padding: 10px 15px; }
+.empty-state h3 { font-family: 'Outfit', sans-serif; font-size: 23px; }
+.empty-state p { font-size: 14px; }
+@media (max-width: 760px) {
+  .hero h1 { font-size: clamp(50px, 11vw, 70px); letter-spacing: -2px; }
+  .section-heading h2 { font-size: 26px; }
+  .game-art { height: 135px; }
+  .game-info { padding: 13px; }
+  .game-title-row h3 { font-size: 17px; }
+  .game-title-row p { font-size: 12px; }
+  .quick-stats small { font-size: 10px; }
+}
+@media (max-width: 430px) {
+  .game-art { height: 155px; }
+  .explore-title-row h1 { font-size: 40px; }
 }
