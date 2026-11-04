@@ -1,0 +1,12 @@
+{
+  "name": "arcade",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": ["apps/web"],
+  "scripts": {
+    "dev": "npm run dev --workspace @arcade/web",
+    "build": "npm run build --workspace @arcade/web",
+    "preview": "npm run preview --workspace @arcade/web"
+  }
+}
