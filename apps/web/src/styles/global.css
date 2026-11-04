@@ -396,3 +396,33 @@ button, input { font-family: inherit; }
 .merge-tile { display:grid; place-items:center; aspect-ratio:1; border-radius:10px; background:#293448; color:#f5f2e9; font:700 clamp(18px,4vw,30px) 'Outfit',sans-serif; }
 .merge-tile.tile-2 { background:#e8dfca; color:#3a352c; }.merge-tile.tile-4 { background:#e6cda0; color:#3a352c; }.merge-tile.tile-8 { background:#e8a66e; }.merge-tile.tile-16 { background:#dc805e; }.merge-tile.tile-32 { background:#cb665d; }.merge-tile.tile-64 { background:#b94b58; }.merge-tile.tile-128,.merge-tile.tile-256,.merge-tile.tile-512,.merge-tile.tile-1024,.merge-tile.tile-2048 { background:#d8b65f; color:#29251c; }
 @media(max-width:560px){.arcade-game-panel{padding:16px}.arcade-game-header h2{font-size:25px}.arcade-game-score{gap:13px;font-size:9px}.arcade-game-footer{font-size:9px}.memory-board,.merge-board{gap:6px;padding:8px}.arcade-game-curtain{padding:18px}}
+
+
+/* ARCADE gameplay controls: comfortable mouse, keyboard and touch targets */
+.arcade-touch-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  touch-action: none;
+}
+.arcade-touch-controls button {
+  min-width: 58px;
+  min-height: 46px;
+  padding: 10px 18px;
+  border: 1px solid #f5d58a55;
+  border-radius: 12px;
+  color: #f5d58a;
+  background: #202b40;
+  font-weight: 800;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.arcade-touch-controls button:active { background: #f5d58a; color: #171b24; }
+.arcade-canvas { display: block; width: 100%; height: auto; max-height: min(62vh, 420px); object-fit: contain; touch-action: none; }
+@media (max-width: 600px) {
+  .arcade-touch-controls { gap: 10px; padding: 8px; }
+  .arcade-touch-controls button { min-width: 68px; min-height: 52px; }
+}
