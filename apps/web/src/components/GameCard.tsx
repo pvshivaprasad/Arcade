@@ -10,13 +10,16 @@ export default function GameCard({ game, onPlay }: Props) {
   const ready = game.status === "available";
 
   return (
-    <article className={`game-card art-${game.accent}`}>
+    <article className={`game-card art-${game.accent} game-${game.id}`}>
       <div className="game-art">
-        <span className="art-orbit orbit-one" />
-        <span className="art-orbit orbit-two" />
+        <span className="art-scene scene-back" aria-hidden="true" />
+        <span className="art-scene scene-front" aria-hidden="true" />
+        <span className="art-orbit orbit-one" aria-hidden="true" />
+        <span className="art-orbit orbit-two" aria-hidden="true" />
         <span className="art-symbol">{game.symbol}</span>
         <span className="art-category">{game.category}</span>
         {!ready && <span className="coming-tag"><Lock size={11} /> Coming soon</span>}
+        <span className="art-index" aria-hidden="true">ARCADE / {String(game.id).toUpperCase()}</span>
       </div>
       <div className="game-info">
         <div className="game-title-row">
@@ -35,6 +38,7 @@ export default function GameCard({ game, onPlay }: Props) {
         <div className="game-meta">
           <span><Gamepad2 size={13} /> {game.players}</span>
           <span>{game.difficulty}</span>
+          <span className={`game-status ${ready ? "status-ready" : ""}`}>{ready ? "Playable" : "In the works"}</span>
         </div>
       </div>
     </article>
