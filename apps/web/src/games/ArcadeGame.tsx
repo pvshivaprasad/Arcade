@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUp, Pause, Play, RotateCcw, X } from "lucide-react";
+import { Pause, Play, RotateCcw, X } from "lucide-react";
 
 type Props = { gameId: string; onClose: () => void };
-type Point = { x: number; y: number };
 const W = 640, H = 420;
 
 const TITLES: Record<string, string> = {
@@ -30,7 +29,6 @@ function newTiles() {
 
 export default function ArcadeGame({ gameId, onClose }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const frameRef = useRef(0);
   const stateRef = useRef<any>({});
   const keysRef = useRef<Record<string, boolean>>({});
   const [status, setStatus] = useState<"ready" | "playing" | "paused" | "over">("ready");
@@ -41,7 +39,6 @@ export default function ArcadeGame({ gameId, onClose }: Props) {
   const [flipped, setFlipped] = useState<number[]>([]);
   const [matched, setMatched] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
-  const [message, setMessage] = useState("");
 
   const finish = useCallback(() => setStatus("over"), []);
   const resetArcade = useCallback(() => {
